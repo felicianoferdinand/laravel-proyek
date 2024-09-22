@@ -2,12 +2,13 @@
 
 namespace Database\Factories;
 
+use App\Models\Product;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Model>
  */
-class SupplierFactory extends Factory
+class TransaksiPenjualanFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -17,10 +18,10 @@ class SupplierFactory extends Factory
     public function definition(): array
     {
         return [
-            'no_hp_pic_supplier' => $this->faker->numerify('+62###########'),
-            'alamat_supplier' =>$this->faker->streetAddress(),
-            'pic_name'=> $this->faker->unique()->name(),
-            'name' => $this->faker->unique()->name,
+            'tanggal_transaksi'=>$this->faker->date('Y-m-d'),
+            'nama_kasir' =>$this->faker->name(),
+            'id_products' => Product::factory(),
+            'jumlah_pembelian' => $this->faker->randomNumber(),
         ];
     }
 }

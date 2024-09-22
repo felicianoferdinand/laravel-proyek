@@ -12,7 +12,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div>
-                    <h3 class="text-center my-4">Supplier List</h3>
+                    <h3 class="text-center my-4">Transaksi Penjualan</h3>
                     <hr>
                 </div>
                 <div class="card border-8 shadow-sm rounded">
@@ -22,26 +22,32 @@
                         <table class="table table-bordered">
                             <thead>
                                 <tr>
-                                    <th scope="col">Nama Supplier</th>
-                                    <th scope="col">Alamat Supplier</th>
-                                    <th scope="col">PIC Supplier</th>
-                                    <th scope="col">No HP PIC Supplier</th>
+                                    <th scope="col">Tanggal Transaksi</th>
+                                    <th scope="col">Nama Kasir</th>
+                                    <th scope="col">Nama Produk</th>
+                                    <th scope="col">Kategori Produk</th>
+                                    <th scope="col">Harga</th>
+                                    <th scope="col">Jumlah Pembelian</th>
+                                    <th scope="col">Total Harga</th>
                                     <th scope="col" style="width: 20%;">ACTIONS</th>
                                 </tr>
                             </thead>
                             <tbody>
 
-                                @forelse ($suppliers as $supplier )
+                                @forelse ($totalTrans as $trans )
 
                                     <tr>
-                                        <td class="text-center align-middle">{{ $supplier->name }}</td>
-                                        <td class="text-center align-middle">{{ $supplier->alamat_supplier }}</td>
-                                        <td class="text-center align-middle">{{ $supplier->pic_name }}</td>
-                                        <td class="text-center align-middle">{{ $supplier->no_hp_pic_supplier }}</td>
+                                        <td class="text-center align-middle">{{ $trans->tanggal_transaksi }}</td>
+                                        <td class="text-center align-middle">{{ $trans->nama_kasir }}</td>
+                                        <td class="text-center align-middle">{{ $trans->product->name }}</td>
+                                        <td class="text-center align-middle">{{ $trans->product->category->name }}</td>
+                                        <td class="text-center align-middle">{{ 'Rp'.$trans->product->price }}</td>
+                                        <td class="text-center align-middle">{{ $trans->jumlah_pembelian }}</td>
+                                        <td class="text-center align-middle">{{ 'Rp'.$trans->product->price * $trans->jumlah_pembelian }}</td>
                                         <td class="text-center  flex flex-row justify-center align-middle">
                                             <form onsubmit="return confirm('Apakah Anda Yakin?');" method="POST">
-                                                <a href="{{ route('products.show', $supplier->supplier_id) }}" class="btn btn-sm btn-dark">SHOW</a>
-                                                <a href="{{ route('products.edit', $supplier->supplier_id) }}" class="btn btn-sm btn-primary">EDIT</a>
+                                                <a href="" class="btn btn-sm btn-dark">SHOW</a>
+                                                <a href="" class="btn btn-sm btn-primary">EDIT</a>
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-sm btn-danger">HAPUS</button>
@@ -64,7 +70,7 @@
 
                     </div>
                     <div class="d-flex justify-content-center">
-                        {{ $suppliers->links('pagination::bootstrap-5') }}
+                        {{ $totalTrans->links('pagination::bootstrap-5') }}
                     </div>
 
                 </div>

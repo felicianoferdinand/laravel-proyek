@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('suppliers', function (Blueprint $table) {
-            $table->id('supplier_id');
-            $table->string('pic_name', 100);
-            $table->string('name', 100);
-            $table->string('alamat_supplier',255);
-            $table->string('no_hp_pic_supplier',100);
+        Schema::create('transaksi_penjualans', function (Blueprint $table) {
+            $table->id('id');
+            $table->unsignedBigInteger('id_products');
+            $table->bigInteger('jumlah_pembelian');
+            $table->string('nama_kasir',255);
+            $table->dateTime('tanggal_transaksi');
             $table->timestamps();
         });
     }
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('suppliers');
+        Schema::dropIfExists('transaksi_penjualan');
     }
 };

@@ -23,6 +23,7 @@
                             <thead>
                                 <tr>
                                     <th scope="col">IMAGE</th>
+                                    <th scope="col">Nama Supplier</th>
                                     <th scope="col">TITLE</th>
                                     <th scope="col">CATEGORY</th>
                                     <th scope="col">PRICE</th>
@@ -40,6 +41,7 @@
                                         </td>
                                         <td class="text-center align-middle">{{ $product->name }}</td>
                                         <td class="text-center align-middle">{{ $product->category->name }}</td>
+                                        <td class="text-center align-middle">{{ $product->supplier->name }}</td>
                                         <td class="text-center align-middle">{{ "Rp " . number_format($product->price, 2, ',', '.') }}</td>
                                         <td class="text-center align-middle">{{ $product->stock }}</td>
                                         <td class="text-center  flex flex-row justify-center align-middle">

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\TransaksiPenjualanController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SupplierController;
@@ -14,3 +15,5 @@ Route::resource('/products', ProductController::class);
 
 // Route resource for supplier
 Route::resource('/supplier', SupplierController::class);
+
+Route::resource('/transaksipenjualan', TransaksiPenjualanController::class);
